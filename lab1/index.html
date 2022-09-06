@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab work 1 (Web)</title>
+<!--  <link rel="stylesheet" href="style.css">-->
+  <style>
+    div.header {
+      margin-left: 10px;
+      margin-right: 10px;
+      min-width: 700px;
+      text-align: center;
+      font-family: monospace;
+
+    }
+
+    .box-error {
+      color: #ff0000;
+    }
+
+    .text-error {
+      border: 1px solid #ff0000;
+    }
+
+
+    div.right_part {
+      width: 470px;
+      float: left;
+      position: absolute;
+      height: 600px;
+      top: 50%;
+      margin-top: -262px;
+      font-size: 17px;
+    }
+    img.graph {
+      width: 422px;
+      height: 322px;
+      margin-right: 5px;
+    }
+
+    div.graph {
+      text-align: center;
+    }
+
+
+    div.result_table {
+      position: absolute;
+      right: 0;
+      /*float: right;*/
+      width: 950px;
+      clear: both;
+      margin: 30px;
+      min-width: 840px;
+      overflow-y: scroll;
+      height: 600px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .table th {
+      font-weight: bold;
+      padding: 5px;
+      background: #efefef;
+      border: 1px solid #dddddd;
+    }
+    .table td{
+      padding: 5px 10px;
+      border: 1px solid #eee;
+      text-align: left;
+    }
+
+
+    .getIn {
+      background-color: #00FF7F;
+    }
+
+    .notGetIn {
+      background-color: #FA8072;
+    }
+
+
+
+    div {
+      background-color: #fef9d7;
+      /*border: 1px solid black;*/
+      border-radius: 15px;
+      padding: 10px;
+
+    }
+    body {
+      padding: 10px;
+      margin: 0 auto;
+      background-color: #fef9f7;
+    }
+
+
+    .btn {
+
+      border: 1px solid #fff;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #444;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+      cursor: pointer;
+      user-select: none;
+      appearance: none;
+      touch-action: manipulation;
+      vertical-align: top;
+      transition: box-shadow 0.2s;
+
+    }
+    .btn:focus-visible {
+      border: 1px solid #4c51f9;
+      outline: none;
+    }
+    .btn:hover {
+      transition: all 0.2s;
+      box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+    }
+    .btn:active {
+      background-color: #808080;
+    }
+  </style>
+</head>
+
+
+<body>
+<div class="header">
+  <h2 class="header">Trofimchenko Vlad, P32091, Variant: 1021</h2>
+</div>
+
+
+<div class="right_part">
+  <div class="graph">
+      <img src="png/areas.png" alt="Рисунок, на котором изображена заданная область" class="graph">
+  </div>
+
+
+  <div class="input_form">
+    <form action="" name="coordinates_form" onsubmit="onSubmit(); return false;">
+
+
+      <!--Checkbox для значений X-->
+      <label>Значение X:</label>
+      <input type="checkbox" id="x_value1"
+             name="x_value" value="-4" class="x-checkbox" checked>
+      <label class="x_box_label" for="x_value1">-4</label>
+
+      <input type="checkbox" id="x_value2"
+             name="x_value" value="-3" class="x-checkbox">
+      <label class="x_box_label" for="x_value2">-3</label>
+
+      <input type="checkbox" id="x_value3"
+             name="x_value" value="-2" class="x-checkbox">
+      <label class="x_box_label" for="x_value3">-2</label>
+
+      <input type="checkbox" id="x_value4"
+             name="x_value" value="-1" class="x-checkbox">
+      <label class="x_box_label" for="x_value4">-1</label>
+
+      <input type="checkbox" id="x_value5"
+             name="x_value" value="0" class="x-checkbox">
+      <label class="x_box_label" for="x_value5">0</label>
+
+      <input type="checkbox" id="x_value6"
+             name="x_value" value="1" class="x-checkbox">
+      <label class="x_box_label" for="x_value6">1</label>
+
+      <input type="checkbox" id="x_value7"
+             name="x_value" value="2" class="x-checkbox">
+      <label class="x_box_label" for="x_value7">2</label>
+
+      <input type="checkbox" id="x_value8"
+             name="x_value" value="3" class="x-checkbox">
+      <label class="x_box_label" for="x_value8">3</label>
+
+      <input type="checkbox" id="x_value9"
+             name="x_value" value="4" class="x-checkbox">
+      <label class="x_box_label" for="x_value9">4</label>
+
+
+
+      <!--Поле для значения Y -->
+      <label for="y_value"><br><br>Значение Y</label>
+      <input type="text" id="y_value" placeholder="-5 ... 5" pattern="^[^\s]+(\s.*)?$">
+      <br><br>
+
+
+
+      <!--Checkbox для значений R-->
+      <label>Значение R</label>
+       <input type="checkbox" id="r_value1"
+              name="r_value" value="1" class="r-checkbox" checked>
+       <label class="r_box_label" for="r_value1">1</label>
+
+       <input type="checkbox" id="r_value2"
+               name="r_value" value="1.5" class="r-checkbox">
+      <label class="r_box_label" for="r_value2">1.5</label>
+
+      <input type="checkbox" id="r_value3"
+               name="r_value" value="2" class="r-checkbox">
+      <label class="r_box_label" for="r_value3">2</label>
+
+      <input type="checkbox" id="r_value4"
+               name="r_value" value="2.5" class="r-checkbox">
+      <label class="r_box_label" for="r_value4">2.5</label>
+
+      <input type="checkbox" id="r_value5"
+               name="r_value" value="3" class="r-checkbox">
+      <label class="r_box_label" for="r_value5">3</label>
+
+      <br>
+      <br>
+
+
+      <!--Кнопки-->
+      <input type="submit" id="save" class="btn">
+      <input type="reset" value="Очистить форму" class="btn">
+      <button type="button" onclick="clearHistory()" class="btn">Очистить историю</button>
+
+
+
+      </form>
+    </div>
+  </div>
+
+
+
+<!--Таблица-->
+<div class="result_table">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Текущее время</th>
+      <th>Время исполнения</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>R</th>
+      <th>Результат</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="no_result"><th colspan="6">Нет результатов</th></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!--Скрипт для того чтобы сделать из Checkbox своеобразный Radio-->
+<script type="text/javascript">
+  //var inputs = $('.x-checkbox');
+  let x_inputs = document.getElementsByName("x_value");
+  for (let i = 0; i < x_inputs.length; i++)
+    x_inputs[i].onchange = XcheckboxHandler;
+
+  let r_inputs = document.getElementsByName("r_value");
+  for (let i = 0; i < r_inputs.length; i++)
+    r_inputs[i].onchange = RcheckboxHandler;
+
+  function XcheckboxHandler(e) {
+    for (let i = 0; i < x_inputs.length; i++)
+      if (x_inputs[i].checked && x_inputs[i] !== this)
+        x_inputs[i].checked = false;
+  }
+  function RcheckboxHandler(e) {
+    for (let i = 0; i < r_inputs.length; i++)
+      if (r_inputs[i].checked && r_inputs[i] !== this)
+        r_inputs[i].checked = false;}
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./javascript/table.js"></script>
+<script src="./javascript/restore.js"></script>
+</body>
+</html>
